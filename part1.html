@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+   <p>To Do List</p>
+        <ul class="ToDo">
+
+        </ul>
+   <input type="text" id="tasks">
+    <button id="addTask">Click to add task</button>
+    <script>
+        $(document).ready(function(){
+            $("#addTask").click(function()
+            {
+                var newTask = $("#tasks").val();
+                var newToDo = $('<li>' + newTask + '</li>');
+                newToDo.click(toggleDone);
+                $("ul").append(newToDo);
+            });
+            $().click(toggleDone);
+
+            function toggleDone() {
+                $(this).toggleClass("done");
+            }
+        });
+    </script>
+</body>
+</html>
