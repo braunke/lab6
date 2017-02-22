@@ -13,20 +13,30 @@
         </ul>
    <input type="text" id="tasks">
     <button id="addTask">Click to add task</button>
+    <button id="removeTask">Click to remove completed tasks</button>
     <script>
         $(document).ready(function(){
             $("#addTask").click(function()
             {
+               //gets the value from the input box
                 var newTask = $("#tasks").val();
+                //created variable for list item
                 var newToDo = $('<li>' + newTask + '</li>');
+                //adds class to the list item
                 newToDo.click(toggleDone);
+                //adds class to list item
                 $("ul").append(newToDo);
+                //sets text box back to blank
+                $("#tasks").val("");
             });
-            $().click(toggleDone);
-
+            //function that adds or removes done class
             function toggleDone() {
                 $(this).toggleClass("done");
             }
+            //romoves list tiems with the class done
+            $("#removeTask").click(function(){
+                $(".done").remove();
+            })
         });
     </script>
 </body>

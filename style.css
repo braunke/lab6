@@ -5,4 +5,5 @@ li{
 .done{
     text-decoration: line-through;
     color : darkblue;
+    font-size : medium;
 }
