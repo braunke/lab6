@@ -14,7 +14,19 @@
    <input type="text" id="tasks">
     <button id="addTask">Click to add task</button>
     <button id="removeTask">Click to remove completed tasks</button>
-    <script>
+    <table>
+        <thead>
+        <tr>
+            <th>Task</th>
+            <th>Date Completed</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+   <script>
         $(document).ready(function(){
             $("#addTask").click(function()
             {
@@ -33,11 +45,26 @@
             function toggleDone() {
                 $(this).toggleClass("done");
             }
-            //romoves list tiems with the class done
-            $("#removeTask").click(function(){
-                $(".done").remove();
-            })
-        });
+            //removes list items with the class done
+            $("#removeTask").click(function() {
+                //code found from tutorials colection on how to get current date
+                var currdate = new Date();
+                var currdate= (currdate.getMonth()+ 1) + '/' + currdate.getDate() + '/' + currdate.getFullYear();
+                //adds the slideUp animation to done tasks
+                var doneTasks = $(".done").slideUp(1000);
+                //setTimeout has the prgram wait 1sec after the slideUp is done
+                setTimeout(function() {
+                    //function appends the done tasks to the body of the table
+                    $("tbody").append(doneTasks);
+
+                doneTasks.replaceWith(function () {
+                    return '<tr><td>' + $(this).text() + '</td><td>' +
+                        currdate + '</td></tr>';
+                }
+                );},1000)
+            });
+
+            });
     </script>
 </body>
 </html>
